@@ -45,6 +45,12 @@ const resolvers = {
         }
 
     },
+
+    // doesnt matter if you write deleteBook or removeBook!
+    removeBook: async function (parent, args, context) {
+        // TODO: args.bookId
+        
+    }
     
   },
 };
