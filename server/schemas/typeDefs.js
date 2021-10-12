@@ -1,4 +1,4 @@
-const { gql } = require ('apollo-server-repress');
+const { gql } = require ('apollo-server-express');
 // ! = require
 const typeDefs = gql `
     type User {
