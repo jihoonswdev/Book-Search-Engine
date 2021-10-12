@@ -13,7 +13,7 @@ const typeDefs = gql `
         bookId: ID!
         authors: [String!]
         description: String
-        image: String,
+        image: String
         link: String
         title: String!
     }
@@ -23,6 +23,13 @@ const typeDefs = gql `
         user: User
     }
 
-    
+    input BookInput {
+        authors: [String]
+        description: String
+        bookId: String
+        image: String
+        link: String
+        title: String
+    }
 
 `
