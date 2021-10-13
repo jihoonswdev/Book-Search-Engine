@@ -17,42 +17,60 @@ const resolvers = {
     },
   },
 
-  mutation: {
-    addUser: async function (parent, args) {},
+  Mutation: {
+    addUser: async function (parent, args) {
+        console.log("addUser: args: ", args);
+        // TODO:
+
+
+        // return /* TODO: data to return */
+    },
 
     login: async function (parent, { email, password }) {
-      // find the User with input email
-      const user = await User.findOne({ email });
-
-      if (!user) {
-        throw new AuthenticationError ('Incorrect Credential');
-      }
-
-      const correctPw = await user.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw new AuthenticationError ('Incorrect Password');
-      }
-
-      const token = signToken(user);
-      return { token, user };
-    },
-
-    saveBook: async function (parent, {bookData}, context) {
-        if (context.user) {
-            // TODO: args.book
-
+        // console.log("args: ", args);
+        console.log("login: email: ", email, " password: ", password);
+        const user = await User.findOne({ email });
+        if (!user) {
+            throw new AuthenticationError('Incorrect Credentials');
         }
 
+        const correctPw = await user.isCorrectPassword(password);
+
+        if (!correctPw) {
+            throw new AuthenticationError('Incorrect Credentials');
+        }
+        const token = signToken(user);
+        return { token, user };
     },
 
-    // doesnt matter if you write deleteBook or removeBook!
+    saveBook: async function (parent, { bookData }, context) {
+        // console.log("args",  args);
+        if (context.user) {
+            // TODO:
+
+            // return /* TODO: data to return */;
+        }
+
+        throw new AuthenticationError('You need to be logged in!');
+
+    },
+
     removeBook: async function (parent, args, context) {
-        // TODO: args.bookId
-        
+        console.log("args: ", args);
+        console.log(`context: ${context}`);
+        if (context.user) {
+            // ToODO:
+            // args.bookId?
+
+
+            // return /* TODO: data to return */;
+        }
+
+        throw new AuthenticationError('You need to be logged in!');
+
     }
-    
-  },
-};
+}
+}
 
 module.exports = resolvers;
+
