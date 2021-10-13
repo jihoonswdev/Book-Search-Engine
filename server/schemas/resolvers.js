@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { Users, User } = require("../models");
+const { User } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -69,7 +69,7 @@ const resolvers = {
 
     },
 
-    removeBook: async function (parent, args, context) {
+    removeBook: async function (parent, {bookId}, context) {
         console.log("args: ", args);
         console.log(`context: ${context}`);
         if (context.user) {

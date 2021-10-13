@@ -19,6 +19,7 @@ module.exports = {
 
     if (!token) {
       // TODO: this should return req not throwing error
+
       return req;
       // return res.status(400).json({ message: 'You have no token!' });
     }
